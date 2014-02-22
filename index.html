@@ -8,16 +8,17 @@
 		<div class="row">
 			<div class="title">
 				<h1>Blokkit</h1>
+				{{thing}}
 			</div>
 		</div>
 		<div class="row search">
 			<div class="search">
-				<input type="text" placeholder="search..." ng-model="search">
+				<input type="text" placeholder="search..." ng-model="searchString.name">
 			</div>
 		</div>
 		<div class="row">
 			<ul>
-				<li class="blok" ng-repeat="blok in bloks">
+				<li class="blok" ng-repeat="blok in bloks | filter:searchString">
 					<p>{{ blok.name }}</p>
 					<p>{{ blok.details.description }}</p>
 				</li>
