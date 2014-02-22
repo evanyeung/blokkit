@@ -20,12 +20,13 @@ ul {
 	text-align: center;
 }
 
-.brik {
+.blok {
 	display: inline-block;
 	list-style-type: none;
 	width: 33%;
 	height: 100px;
 	background-color: black;
-	margin: 0;
+	margin: 5px;
 	padding: 0;
+	color: white;
 }

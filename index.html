@@ -4,7 +4,7 @@
 	<link rel="stylesheet" href="css/blokkit.css">
 </head>
 <body ng-app="blokkit">
-	<div class="container">
+	<div class="container" ng-controller="main">
 		<div class="row">
 			<div class="title">
 				<h1>Blokkit</h1>
@@ -12,17 +12,15 @@
 		</div>
 		<div class="row search">
 			<div class="search">
-				<input type="text" placeholder="search...">
+				<input type="text" placeholder="search..." ng-model="search">
 			</div>
 		</div>
 		<div class="row">
 			<ul>
-				<li class="brik"></li>
-				<li class="brik"></li>
-				<li class="brik"></li>
-				<li class="brik"></li>
-				<li class="brik"></li>
-				<li class="brik"></li>
+				<li class="blok" ng-repeat="blok in bloks">
+					<p>{{ blok.name }}</p>
+					<p>{{ blok.details.description }}</p>
+				</li>
 			</ul>
 		</div>
 	</div>

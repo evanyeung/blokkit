@@ -1,0 +1,20 @@
+activity {
+	name: string, //id
+	details: {
+		verbose_name: string,
+		description: string,
+		links: [string, string],
+		updated_at: int //datetime,
+		popularity: int,
+		tags: [string, string]
+	}
+} (priority: updated_at)
+
+tags {
+	tag1: [act1, act2],
+}
+
+[
+name: id,
+name2: id2
+]
