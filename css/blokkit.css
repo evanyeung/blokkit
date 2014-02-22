@@ -19,14 +19,18 @@ body {
 	padding: 0;
 	background-color: rgba(200,200,200,1);
 }
+
+
+
 /* Header */
 .header {
 	background-color: rgba(150,150,150,1);
 	width: 100%;
 	margin: 0;
-	padding: 15px;
+	padding: 15px 0;
 }
 
+/*Title*/
 .Blokkit {
 	color:;
 	padding: 0;
@@ -39,9 +43,15 @@ body {
 	padding: 0;
 }
 
-ul {
-	margin: 0;
-	padding: 0;
+/*add button*/
+.add{
+	width: 20%;
+	margin: 0 auto;
+	padding: 5px;
+	text-align: center;
+	background-color: green;
+	border-radius: 50px;
+	text-decoration: none;
 }
 
 .title,
@@ -53,18 +63,20 @@ ul {
 
 
 /* Blocks */
-.rowlist {
-	padding-top: 10px;
-	padding-left:32px;
+ul {
+	margin: 0;
+	padding: 0;
+	width: 100%;
 }
 
-li {
-	color: white;
+.rowlist {
+	margin-top: 10px;
+	margin-left:10px;
 }
 
 h2 {
 	margin: 0;
-	padding: 0;
+	padding: 10px;
 	width: 28%;
 	overflow: hidden;
 
@@ -75,8 +87,8 @@ h2 {
 	list-style-type: none;
 	width: 28%;
 	height: 200px;
-	background-color: black;
-	margin: 25px;
+	background-color: rgba(225,225,225,.5);
+	margin: 15px 25px 25px 35px;
 	padding: 0;
 	overflow: hidden;
 	border-radius: 10px
