@@ -1,21 +1,46 @@
 var app = angular.module('blokkit', ['firebase']);
 
+app.directive('liblok', function() {
+	return {
+		restrict: 'A',
+		"link": function (scope, element, attrs) {
+			element.on('click', function() {
+				if (!element.hasClass('detailView'))
+				{
+					element.addClass('detailView');;
+					scope.templateUrl = 'detailBlok.html'
+				}
+				else
+				{
+					element.removeClass('detailView');
+					scope.templateUrl = 'blok.html'
+				}
+			});
+		}
+	}
+});
+
+// "link": function (scope, element, attrs) {
+// 			jQuery('.blok').click(function(event){
+// 				var blok = jQuery(event.target);
+// 				blok.addClass('expanded');
+// 			});
+// 		}
+
 function main($scope, $firebase) {
+	$scope.templateUrl = 'blok.html'
+	//firebase instance
 	var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
+	//bind it to angular object
 	$scope.bloksObj = $firebase(fbActivities);
-	//console.log(Object.keys($scope.bloks.$child('act1')));
-	//console.log($scope.bloks.$child('act1').$child('details'));
 
 	$scope.bloksObj.$on('loaded', function(snapshot) {
-	 	console.log(snapshot);
-	 	//$scope.thing = snapshot.act1.name;
+
 	 	var bloks = []
 	 	angular.forEach(snapshot, function(value, key){
-	 		console.log(value);
-	 		console.log(key);
 	 		bloks.push(value);
 	 	});
-	 	console.log(bloks);
+
 	 	$scope.bloks = bloks;
 	 });
 }

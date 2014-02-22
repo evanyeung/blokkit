@@ -10,30 +10,33 @@
 				<h1>Blokkit</h1>
 			</div>
 		</div>
-		<div class="row search">
-			<div class="search">
-<!-- 				<input type="text" placeholder="search..." ng-model="searchString.name">
- -->			</div>
-		</div>
 		<div class="row">
 			<input type="text" placeholder="search..." ng-model="searchString.$">
 
 			<ul>
-				<li class="blok" ng-repeat="blok in bloks | filter:searchString">
-					<p>{{ blok.details.verbose_name }}</p>
-					<p>{{ blok.details.description }}</p>
-				</li>
-			</ul>
-			<ul>
-				<li class="blok" ng-repeat="blok in ang | filter:searchString">
-					<p>{{ blok.details.verbose_name }}</p>
+				<li class="blok" ng-repeat="blok in bloks | filter:searchString" ng-include="templateUrl">
+					<p class="name">{{ blok.details.verbose_name }}</p>
 					<p>{{ blok.details.description }}</p>
 				</li>
 			</ul>
 		</div>
 	</div>
+
+	<!--templates-->
+	<!--not used now-->
+	<script type="text/ng-template" id="blok.html">
+		<p class="name">{{ blok.details.verbose_name }}</p>
+		<p>{{ blok.details.description }}</p>
+	</script>
+
+	<script type="text/ng-template" id="detailBlok.html">
+		<p class="name">{{ blok.details.verbose_name }}</p>
+		<p>{{ blok.details.description }}</p>
+		<p>detailed</p>
+	</script>
 	
 	<!--scripts-->
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
 	<script src='https://cdn.firebase.com/v0/firebase.js'></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
