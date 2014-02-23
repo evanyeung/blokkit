@@ -57,7 +57,7 @@
 				<div class="category">
 					<input type="checkbox" name="category" value="sports" ng-model="activity.category1" />Sports
 					<br />
-					<input type="checkbox" name="category" value="art" ng-model="activity.category2" />Visual Arts and Design
+					<input type="checkbox" name="category" value="art" ng-model="activity.category2" />Arts and Design
 					<br />
 					<input type="checkbox" name="category" value="programming" ng-model="activity.category3" />Developing and Programming
 					<br />
@@ -93,11 +93,24 @@
 			<div class="row">
 				<button ng-click="showAddForm.shown = !showAddForm.shown">Add Hobby</button>
 			</div>
+			<div class="row">
+				<ul>
+					<li tab cat="category" this-cat="all">All</li>
+					<li tab cat="category" this-cat="sports">Sports</li>
+					<li tab cat="category" this-cat="design">Design</li>
+					<li tab cat="category" this-cat="coding">Coding</li>
+					<li tab cat="category" this-cat="games">Games</li>
+					<li tab cat="category" this-cat="tv">TV</li>
+					<li tab cat="category" this-cat="books">Books</li>
+					<li tab cat="category" this-cat="movies">Movies</li>
+				</ul>
+			</div>
 		</div>
 		<div class="row">
 			<div class="row search">
 				<div class="search">
 					<input type="text" placeholder="search..." ng-model="searchString.$">
+					{{category.cat}}
 				</div>
 			</div>
 			<ul>

@@ -50,6 +50,24 @@ body {
 	margin: 0;
 }
 
+/*categories*/
+.header ul {
+	margin: 0 auto;
+	width: 63%;
+}
+.header li {
+	width: 7%;
+	margin: 5px 2%;
+	float: left;
+	list-style: none;
+	text-align: center;
+	color: #eeeeee;
+	background-color: blue;
+}
+
+.tabs {
+	width: 100%;
+}
 /*add button*/
 
 button {
@@ -114,7 +132,7 @@ a:active {
 	background-color: #eeeeee;
 	color: #555555;
 	border-radius: 5px;
-	margin-top: 150px;
+	margin-top: 157px;
 	width: 100%;
 	font-size: 1.25em;
 	padding: 7px 12px 7px 12px;
