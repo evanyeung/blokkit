@@ -21,31 +21,37 @@ app.factory('DB', function($firebase){
 	return {'activities': activities}
 });
 
-app.directive('gallery', function() {
-	return {
-		restrict: 'A',
-		scope: {
-			activities: '='
-		},
-		templateUrl: 'bloks.html'
-	};
-});
+// app.filter('query', function() {
+// 	return function(input, attribute) {
+// 	if (!angular.isObject(input)) return input;
+
+// 	var array = [];
+// 	for(var objectKey in input) {
+// 		array.push(input[objectKey]);
+// 	}
+
+// 	return array;
+// 	}
+// });
 
 function main($scope, $firebase, ShowAddForm, DB) {
 
 	$scope.showAddForm = ShowAddForm;
+	$scope.bloks = [];
 
-	$scope.bloks = DB.activities;
-
-	//$scope.bloks.$on('loaded', function(snapshot) {
-
-	 	// var bloks = []
-	 	// angular.forEach(snapshot, function(value, key){
-	 	// 	bloks.push(value);
-	 	// });
-	 	//$scope.activities.$bind('$scope', bloks);
-	 	//$scope.bloks = bloks;
-	 //});
+	//$scope.bloks = DB.activities;
+	var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
+	
+	fbActivities.on('value', function(snapshot) {
+		if(snapshot.val() == null) {
+			alert("not existing");
+		} 
+		else {
+		 	angular.forEach(snapshot.val(), function(value, key){
+		 		$scope.bloks.push(value);
+		 	});
+		}
+	});
 }
 
 function form($scope, $firebase, ShowAddForm, DB) {
