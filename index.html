@@ -114,7 +114,7 @@
 				</div>
 			</div>
 			<ul>
-				<li class="blok" ng-repeat="blok in bloks | orderByPriority: reverse | filter: category |filter:searchString" ng-click="showDetails = !showDetails">
+				<li class="blok" ng-repeat="blok in bloks | filter: category |filter:searchString" ng-click="showDetails = !showDetails">
 					<p class="likes">likes: {{blok.activity.likes}}</p>
 					<h2>{{ blok.activity.verbose_name }}</h2>
 					<p>{{ blok.activity.description }}</p>

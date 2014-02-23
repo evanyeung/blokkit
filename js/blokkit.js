@@ -35,11 +35,21 @@ function main($scope, $firebase, ShowAddForm, DB) {
 			console.log("not existing");
 		} 
 		else {
-			$scope.bloks = [];
+			var bloks = [];
 		 	angular.forEach(snapshot.val(), function(value, key){
 		 		value.id = key;
-		 		$scope.bloks.push(value);
+		 		bloks.push(value);
 		 	});
+
+		 	//reverses the order as firbase returns them by priority
+		 	var sortedBloks = [];
+		 	var length = bloks.length
+		 	for(var i = 0; i < length; i++) {
+		 		console.log(i);
+		 		sortedBloks.push(bloks.pop());
+		 	}
+
+		 	$scope.bloks = sortedBloks;
 		}
 	});
 
@@ -53,13 +63,16 @@ function main($scope, $firebase, ShowAddForm, DB) {
 		var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
 		var id = blok.id;
 		delete blok['id'];
+		delete blok['$$hashKey'];
 
 		var now = Date.now();
 		blok.updated_at = now;
-		blok.$priority = now;
 		blok.activity.likes += 1;
 
-		fbActivities.child(id).set(blok);
+		console.log(blok);
+		console.log('about to write');
+		fbActivities.child(id).setWithPriority(blok, now);
+		console.log('written');
 	}
 }
 
