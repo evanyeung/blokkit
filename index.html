@@ -95,14 +95,14 @@
 			</div>
 			<div class="row">
 				<ul>
-					<li tab cat="category" this-cat="all">All</li>
-					<li tab cat="category" this-cat="sports">Sports</li>
-					<li tab cat="category" this-cat="design">Design</li>
-					<li tab cat="category" this-cat="coding">Coding</li>
-					<li tab cat="category" this-cat="games">Games</li>
-					<li tab cat="category" this-cat="tv">TV</li>
-					<li tab cat="category" this-cat="books">Books</li>
-					<li tab cat="category" this-cat="movies">Movies</li>
+					<li ng-click="setCategory('')"><a href="">All</a></li>
+					<li ng-click="setCategory('sports')"><a href="">Sports</a></li>
+					<li ng-click="setCategory('design')"><a href="">Design</a></li>
+					<li ng-click="setCategory('coding')"><a href="">Coding</a></li>
+					<li ng-click="setCategory('games')"><a href="">Games</a></li>
+					<li ng-click="setCategory('tv')"><a href="">TV</a></li>
+					<li ng-click="setCategory('books')"><a href="">Books</a></li>
+					<li ng-click="setCategory('movies')"><a href="">Movies</a></li>
 				</ul>
 			</div>
 		</div>
@@ -110,11 +110,10 @@
 			<div class="row search">
 				<div class="search">
 					<input type="text" placeholder="search..." ng-model="searchString.$">
-					{{category.cat}}
 				</div>
 			</div>
 			<ul>
-				<li class="blok" ng-repeat="blok in bloks | orderByPriority: reverse | filter:searchString" ng-click="showDetails = !showDetails">
+				<li class="blok" ng-repeat="blok in bloks | orderByPriority: reverse | filter: category |filter:searchString" ng-click="showDetails = !showDetails">
 					<h2>{{ blok.activity.verbose_name }}</h2>
 					<p>{{ blok.activity.description }}</p>
 					<div ng-show="showDetails" id="detailView">

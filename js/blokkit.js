@@ -21,28 +21,11 @@ app.factory('DB', function($firebase){
 	return {'activities': activities}
 });
 
-app.directive('tab', function(){
-	// Runs during compile
-	return {
-		scope: {
-			cat: '=',
-		},
-		restrict: 'A',
-		link: function(scope, element, attrs) {
-			element.on('click', function() {
-				console.log(scope.cat.cat);
-				scope.cat.cat = attrs.thisCat;
-				console.log(attrs.thisCat);
-			});
-		}
-	};
-});
-
 function main($scope, $firebase, ShowAddForm, DB) {
 
 	$scope.showAddForm = ShowAddForm;
 	$scope.bloks = [];
-	$scope.category = {'cat': 'all'};
+	$scope.category = ""
 
 	//$scope.bloks = DB.activities;
 	var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
@@ -57,6 +40,11 @@ function main($scope, $firebase, ShowAddForm, DB) {
 		 	});
 		}
 	});
+
+	$scope.setCategory = function(category)
+	{
+		$scope.category = category;
+	}
 }
 
 function form($scope, $firebase, ShowAddForm, DB) {
