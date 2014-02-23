@@ -11,10 +11,20 @@ function removeClass(elem, className) {
     }
 }
 
+app.directive('gallery', function() {
+	return {
+		restrict: 'A',
+		scope: {
+			activities: '='
+		},
+		templateUrl: 'bloks.html'
+	};
+});
+
 app.directive('liblok', function() {
 	return {
 		restrict: 'A',
-		"link": function (scope, element, attrs) {
+		link: function (scope, element, attrs) {
 
 			element.on('click', function() {
 				if (!element.hasClass('detailView'))
@@ -49,6 +59,4 @@ function main($scope, $firebase) {
 
 	 	$scope.bloks = bloks;
 	 });
-
-	$scope.showDetails = false;
 }
