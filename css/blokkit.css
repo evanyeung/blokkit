@@ -186,11 +186,20 @@ ul {
 }
 
 .blok ul {
-	margin-left: 10%;
+	margin-lepx;ft: 10%;
+}
+
+.blok h2 {
+	margin-top: 5px;
+	margin-bottom: 0;
 }
 
 .blok h3 {
 	margin-bottom: 5px;
+}
+
+.blok p {
+	margin-top: 5px;
 }
 
 .blok:hover {
@@ -203,7 +212,7 @@ ul {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     margin: 0 0 0 0;
     padding: 0;
     z-index: 100;
@@ -225,12 +234,19 @@ ul {
 	margin-bottom: 5px;
 }
 
+/*the button*/
 .like {
 	font-size: 12px;
 	width: 12%;
 	height: 20px;
 	margin: 10px auto 0px;
 	padding: 3px;
+}
+
+/*the tally*/
+.likes {
+	margin-top: 3px;
+	margin-bottom: 2px;
 }
 
 .link:hover {
@@ -240,3 +256,4 @@ ul {
 .link:visited {
 	text-decoration: line-through;
 }
+

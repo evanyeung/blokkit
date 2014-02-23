@@ -24,7 +24,6 @@ app.factory('DB', function($firebase){
 function main($scope, $firebase, ShowAddForm, DB) {
 
 	$scope.showAddForm = ShowAddForm;
-	$scope.bloks = [];
 	$scope.category = ""
 
 
@@ -33,10 +32,12 @@ function main($scope, $firebase, ShowAddForm, DB) {
 	
 	fbActivities.on('value', function(snapshot) {
 		if(snapshot.val() == null) {
-			alert("not existing");
+			console.log("not existing");
 		} 
 		else {
+			$scope.bloks = [];
 		 	angular.forEach(snapshot.val(), function(value, key){
+		 		value.id = key;
 		 		$scope.bloks.push(value);
 		 	});
 		}
@@ -47,8 +48,18 @@ function main($scope, $firebase, ShowAddForm, DB) {
 		$scope.category = category;
 	}
 
-	$scope.like = function(uid) {
+	$scope.like = function(blok) {
 		
+		var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
+		var id = blok.id;
+		delete blok['id'];
+
+		var now = Date.now();
+		blok.updated_at = now;
+		blok.$priority = now;
+		blok.activity.likes += 1;
+
+		fbActivities.child(id).set(blok);
 	}
 }
 
@@ -61,13 +72,34 @@ function form($scope, $firebase, ShowAddForm, DB) {
 
 		//var name = $scope.activity.verbose_name.toLowerCase().replace(' ', '_')
 		$scope.activity.categories = "";
-		if ($scope.activity.category1) {$scope.activity.categories = $scope.activity.categories + "sports "}
-		if ($scope.activity.category2) {$scope.activity.categories = $scope.activity.categories + "design "}
-		if ($scope.activity.category3) {$scope.activity.categories = $scope.activity.categories + "coding "}
-		if ($scope.activity.category4) {$scope.activity.categories = $scope.activity.categories + "games "}
-		if ($scope.activity.category5) {$scope.activity.categories = $scope.activity.categories + "tv "}
-		if ($scope.activity.category6) {$scope.activity.categories = $scope.activity.categories + "books "}
-		if ($scope.activity.category7) {$scope.activity.categories = $scope.activity.categories + "movies "}
+		if ($scope.activity.category1) {
+			$scope.activity.categories = $scope.activity.categories + "sports ";
+			delete $scope.activity['category1'];
+		}
+		if ($scope.activity.category2) {
+			$scope.activity.categories = $scope.activity.categories + "design ";
+			delete $scope.activity['category2'];
+		}
+		if ($scope.activity.category3) {
+			$scope.activity.categories = $scope.activity.categories + "coding ";
+			delete $scope.activity['category3'];
+		}
+		if ($scope.activity.category4) {
+			$scope.activity.categories = $scope.activity.categories + "games ";
+			delete $scope.activity['category4'];
+		}
+		if ($scope.activity.category5) {
+			$scope.activity.categories = $scope.activity.categories + "tv ";
+			delete $scope.activity['category5'];
+		}
+		if ($scope.activity.category6) {
+			$scope.activity.categories = $scope.activity.categories + "books ";
+			delete $scope.activity['category6'];
+		}
+		if ($scope.activity.category7) {
+			$scope.activity.categories = $scope.activity.categories + "movies ";
+			delete $scope.activity['category7'];
+		}
 		
 		var now = Date.now();
 
