@@ -15,6 +15,12 @@ app.factory('ShowAddForm', function(){
 	return {'shown': false};
 });
 
+app.factory('DB', function($firebase){
+	var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
+	activities = $firebase(fbActivities);
+	return {'activities': activities}
+});
+
 app.directive('gallery', function() {
 	return {
 		restrict: 'A',
@@ -25,32 +31,35 @@ app.directive('gallery', function() {
 	};
 });
 
-function main($scope, $firebase, ShowAddForm) {
+function main($scope, $firebase, ShowAddForm, DB) {
 
 	$scope.showAddForm = ShowAddForm;
 
-	//firebase instance
-	var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
-	//bind it to angular object
-	$scope.bloksObj = $firebase(fbActivities);
+	$scope.bloks = DB.activities;
 
-	$scope.bloksObj.$on('loaded', function(snapshot) {
+	//$scope.bloks.$on('loaded', function(snapshot) {
 
-	 	var bloks = []
-	 	angular.forEach(snapshot, function(value, key){
-	 		bloks.push(value);
-	 	});
-
-	 	$scope.bloks = bloks;
-	 });
+	 	// var bloks = []
+	 	// angular.forEach(snapshot, function(value, key){
+	 	// 	bloks.push(value);
+	 	// });
+	 	//$scope.activities.$bind('$scope', bloks);
+	 	//$scope.bloks = bloks;
+	 //});
 }
 
-function form($scope, $firebase, ShowAddForm) {
+function form($scope, $firebase, ShowAddForm, DB) {
 
 	$scope.showAddForm = ShowAddForm;
 
 	$scope.submitForm = function() {
-		var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
-		$scope.showAddForm = false;
+		$scope.activities = DB.activities;
+
+		//var name = $scope.activity.verbose_name.toLowerCase().replace(' ', '_')
+		$scope.activities.$add({'activity': $scope.activity})
+
+		$scope.activityForm.$setPristine();
+		$scope.activity = {};
+		$scope.showAddForm.shown = false;
 	};
 }

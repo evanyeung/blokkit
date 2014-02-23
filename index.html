@@ -8,7 +8,7 @@
 	
 	<div id="addForm" ng-show="showAddForm.shown" ng-controller="form">
 		<div>
-			<form>
+			<form name="activityForm">
 					
 				<h2>Activity</h2>
 
@@ -71,7 +71,7 @@
 				<div class="tags">
 					<input ng-model="activity.tags" type="text" name="tags" size="80" maxlength="1000" placeholder="Please ensure each of your tags are separated by spaces..." />
 				</div>
-
+				<button type="button" ng-click="showAddForm.shown=false">Cancel</button>
 				<button type="submit" ng-click="submitForm()">Blokk</button>
 			</form>
 		</div>
@@ -82,7 +82,7 @@
 		<div class="header">
 			<div class="row">
 				<div class="title">
-					<h1 class="Blokkit">Blokkit</h1>
+					<h1 class="Blokkit">Blokk-it</h1>
 				</div>
 			</div>
 			<div class="row">
@@ -101,15 +101,19 @@
 
 	<!--templates-->
 	<script type="text/ng-template" id="bloks.html">
-		<li class="blok" ng-repeat="blok in activities | filter:searchString" ng-click="showDetails = !showDetails">
-			<p>{{ blok.details.verbose_name }}</p>
-			<p>{{ blok.details.description }}</p>
+		<li class="blok" ng-repeat="blok in activities | filter:{activity.verbose_name: 'hello'}" ng-click="showDetails = !showDetails">
+			<p>{{ blok.activity.verbose_name }}</p>
+			<p>{{ blok.activity.description }}</p>
 			<div ng-show="showDetails" id="detailView">
 				<div>
-					<p>{{ blok.details.verbose_name }}</p>
-					<p>{{ blok.details.description }}</p>
-					<p>{{ blok.details.updated_at }}</p>
-					<p>Detailed now</p>
+					<p>{{ blok.activity.verbose_name }}</p>
+					<p>{{ blok.activity.description }}</p>
+					<ul>
+						<li ng-repeat="link in blok.activity.links">
+							{{ link.desc }}<br>
+							{{ link.link }}
+						</li>
+					</ul>
 				</div>
 			</div>
 		</li>
