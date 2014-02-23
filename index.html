@@ -77,10 +77,6 @@
 					<input ng-model="activity.tags" type="text" name="tags" maxlength="1000" placeholder="Please ensure each of your tags are separated by spaces..." />
 				</div>
 				<button type="button" ng-click="showAddForm.shown=false">Cancel</button>
-
-				<input type="hidden" name="date" value="DayinSeconds">
-
-				<script>document.getElementById("DayinSeconds").innerHTML = Date.now()</script>
 				<button type="submit" ng-click="submitForm()">Blokk</button>
 			</form>
 		</div>
@@ -91,11 +87,11 @@
 		<div class="header">
 			<div class="row">
 				<div class="title">
-					<h1 class="Blokkit">Blokk-it</h1>
+					<h1 class="Blokkit">Blokk - It</h1>
 				</div>
 			</div>
 			<div class="row">
-				<button ng-click="showAddForm.shown = !showAddForm.shown">Add Hobby</button>
+				<button ng-click="showAddForm.shown = !showAddForm.shown">Add Activity</button>
 			</div>
 			<div class="row">
 				<ul>

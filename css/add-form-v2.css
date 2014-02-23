@@ -35,14 +35,6 @@
     box-shadow: 0 0 10px #4D8EC7;
 }
 
-#addForm h1 {
-	margin: 0;
-	padding: 0;
-	top: 0;
-	color: white;
-	font-family: helvetica, sans-serif;
-}
-
 #addForm p {
 	margin: 0px;
 	padding: 0;
@@ -53,10 +45,6 @@
 	background-color: rgba(125,125,125, 0.75);
 	position: fixed;
 	width: 100%;
-}
-
-#addForm .title {
-	margin: 20px;
 }
 
 #addForm .activity {

@@ -46,6 +46,10 @@ function main($scope, $firebase, ShowAddForm, DB) {
 	{
 		$scope.category = category;
 	}
+
+	$scope.like = function(uid) {
+		
+	}
 }
 
 function form($scope, $firebase, ShowAddForm, DB) {
