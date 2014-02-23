@@ -1,4 +1,4 @@
-var app = angular.module('blokkit', ['firebase']);
+var app = angular.module('blokkit', ['firebase', 'ngAnimate']);
 
 function hasClass(elem, className) {
     return new RegExp(" " + className + " ").test(" " + elem.className + " ");
@@ -49,7 +49,7 @@ function main($scope, $firebase, ShowAddForm, DB) {
 
 	$scope.showAddForm = ShowAddForm;
 	$scope.category = ""
-	$scope.max_bloks = 5;
+	$scope.max_bloks = 6;
 
 	var fbActivitiesAll = new Firebase('https://blokkit.firebaseio.com/activities');
 	var fbActivities = fbActivitiesAll.limit($scope.max_bloks);
@@ -82,7 +82,7 @@ function main($scope, $firebase, ShowAddForm, DB) {
 	});
 
 	$scope.load_more = function() {
-		$scope.max_bloks += 5;
+		$scope.max_bloks += 3;
 
 		var fbActivities = fbActivitiesAll.limit($scope.max_bloks);
 		fbActivities.on('value', function(snapshot) {

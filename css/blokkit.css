@@ -176,11 +176,6 @@ ul {
 	text-align: center;
 	color: #555555;
 	font-size: 1.25em;
-
-	/*-webkit-transition: height 500ms ease;
-    -moz-transition: height 500ms ease;
-    -o-transition: height 500ms ease;
-    transition: height 500ms ease;*/
 }
 
 .blok ul {
@@ -234,11 +229,11 @@ ul {
 
 /*the button*/
 .like {
-	font-size: 12px;
-	width: 12%;
-	height: 20px;
+	font-size: 1em;
+	width: 20%;
 	margin: 10px auto 0px;
 	padding: 3px;
+	background-color: #5555555;
 }
 
 /*the tally*/
@@ -248,5 +243,23 @@ ul {
 }
 
 .link:hover {
-	color: #dddddd;
+	color: #cccccc;
+}
+
+.animate-show {
+	-webkit-transition: all 50ms linear;
+    -moz-transition: all 50ms linear;
+    -o-transition: all 50ms linear;
+    transition: all 50ms linear;
+
+    opacity: 1;
+}
+
+.animate-show.ng-hide-add,
+.animate-show.ng-hide-remove {
+	display:block!important;
+}
+ 
+.animate-show.ng-hide {
+	opacity:0;
 }

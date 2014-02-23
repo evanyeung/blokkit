@@ -6,7 +6,7 @@
 </head>
 <body ng-app="blokkit">
 	
-	<div id="addForm" ng-show="showAddForm.shown" ng-controller="form">
+	<div id="addForm" ng-show="showAddForm.shown" ng-controller="form" class="animate-show">
 		<div>
 			<form name="activityForm">
 					
@@ -118,7 +118,7 @@
 					<p class="likes">likes: {{blok.activity.likes}}</p>
 					<h2>{{ blok.activity.verbose_name }}</h2>
 					<p>{{ blok.activity.description }}</p>
-					<div ng-show="showDetails" id="detailView">
+					<div ng-show="showDetails" id="detailView" class="animate-show">
 						<div>
 							<h2>{{ blok.activity.verbose_name }}</h2>
 							<p>{{ blok.activity.description }}</p>
@@ -140,10 +140,10 @@
 	</div>
 	
 	<!--scripts-->
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
 	<script src='https://cdn.firebase.com/v0/firebase.js'></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-animate.js"></script>
 	<script src="js/blokkit.js"></script>
 </body>
 </html>
