@@ -57,6 +57,18 @@ form {
 	margin: 15px;
 }
 
+.category {
+	margin: 15px;
+}
+div.category > input {
+	margin: 5px;
+	border: none;
+	border-color: white;
+	width: 15px;
+	height: 15px;
+	color: white;
+}
+
 textarea {
 	padding: 5px;
 	background-color: white;
