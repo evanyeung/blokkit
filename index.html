@@ -77,6 +77,10 @@
 					<input ng-model="activity.tags" type="text" name="tags" maxlength="1000" placeholder="Please ensure each of your tags are separated by spaces..." />
 				</div>
 				<button type="button" ng-click="showAddForm.shown=false">Cancel</button>
+
+				<input type="hidden" name="date" value="DayinSeconds">
+
+				<script>document.getElementById("DayinSeconds").innerHTML = Date.now()</script>
 				<button type="submit" ng-click="submitForm()">Blokk</button>
 			</form>
 		</div>
@@ -110,6 +114,7 @@
 			<div class="row search">
 				<div class="search">
 					<input type="text" placeholder="search..." ng-model="searchString.$">
+					{{category.cat}}
 				</div>
 			</div>
 			<ul>
@@ -128,6 +133,7 @@
 									</li>
 								</ul>
 							</div>
+						<button type="button" class="like">Like</button>
 						</div>
 					</div>
 				</li>

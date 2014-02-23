@@ -27,6 +27,7 @@ function main($scope, $firebase, ShowAddForm, DB) {
 	$scope.bloks = [];
 	$scope.category = ""
 
+
 	//$scope.bloks = DB.activities;
 	var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
 	
