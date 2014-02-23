@@ -21,19 +21,6 @@ app.factory('DB', function($firebase){
 	return {'activities': activities}
 });
 
-// app.filter('query', function() {
-// 	return function(input, attribute) {
-// 	if (!angular.isObject(input)) return input;
-
-// 	var array = [];
-// 	for(var objectKey in input) {
-// 		array.push(input[objectKey]);
-// 	}
-
-// 	return array;
-// 	}
-// });
-
 function main($scope, $firebase, ShowAddForm, DB) {
 
 	$scope.showAddForm = ShowAddForm;
@@ -70,6 +57,12 @@ function form($scope, $firebase, ShowAddForm, DB) {
 		if ($scope.activity.category5) {$scope.activity.categories = $scope.activity.categories + "tv "}
 		if ($scope.activity.category6) {$scope.activity.categories = $scope.activity.categories + "books "}
 		if ($scope.activity.category7) {$scope.activity.categories = $scope.activity.categories + "movies "}
+		
+		var now = Date.now();
+
+		$scope.activity.updated_at = now;
+		$scope.activity.$priority = now;
+		$scope.activity.likes = 0;
 
 		$scope.activities.$add({'activity': $scope.activity})
 

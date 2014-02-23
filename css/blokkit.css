@@ -137,13 +137,6 @@ ul {
 	margin-left:10px;
 }
 
-.blok h2 {
-	margin: 0;
-	padding: 10px;
-	width: 28%;
-	overflow: hidden;
-}
-
 .blok {
 	display: inline-block;
 	list-style-type: none;
@@ -174,18 +167,22 @@ ul {
     height: 100%;
     margin: 0 0 0 0;
     padding: 0;
-    text-align: center;
     z-index: 100;
-    background-color: rgba(10, 10, 10, 0.75);
+    background-color: rgba(100, 100, 100, 0.75);
 }
 
-#detailView div {
+#detailView > div {
     margin: 150px auto;
-    padding: 5px;
-    width: 500px;
-    color: #999999;
-    background-color: #2D2C2B;
-    text-align: center;
+    padding: 1% 5%;
+    width: 40%;
+    color: #eeeeee;
+    background-color: #9CD6A7;
     border-radius: 10px;
-    font-size: 16px;
+    text-align: left;
+    font-size: 1em;
 }
+
+#detailView div p {
+	margin-bottom: 5px;
+}
+

@@ -25,31 +25,31 @@
 				<div class="links"> 
 					<input ng-model="activity.links.link1.desc" type="text" name="link_description1" maxlength="100" placeholder="Description or Title of link..."/>
 					<br />
-					<input ng-model="activity.links.link1.link" type="text" name="link1" maxlength="1000" placeholder="Link..."/>
+					<input ng-model="activity.links.link1.link" type="text" name="link1" maxlength="1000" placeholder="Link... (Please include http://)"/>
 				</div>
 
 				<div class="links"> 
 					<input ng-model="activity.links.link2.desc" type="text" name="link_description2" maxlength="100" placeholder="Description or Title of link..."/>
 					<br />
-					<input ng-model="activity.links.link2.link" type="text" name="link2" maxlength="1000" placeholder="Link..."/>
+					<input ng-model="activity.links.link2.link" type="text" name="link2" maxlength="1000" placeholder="Link... (Please include http://)"/>
 				</div>
 
 				<div class="links"> 
 					<input ng-model="activity.links.link3.desc" type="text" name="link_description3" maxlength="100" placeholder="Description or Title of link..."/>
 					<br />
-					<input ng-model="activity.links.link3.link" type="text" name="link3" maxlength="1000" placeholder="Link..."/>
+					<input ng-model="activity.links.link3.link" type="text" name="link3" maxlength="1000" placeholder="Link... (Please include http://)"/>
 				</div>
 
 				<div class="links"> 
 					<input ng-model="activity.links.link4.desc" type="text" name="link_description3" maxlength="100" placeholder="Description or Title of link..."/>
 					<br />
-					<input ng-model="activity.links.link4.link" type="text" name="link3" maxlength="1000" placeholder="Link..."/>
+					<input ng-model="activity.links.link4.link" type="text" name="link3" maxlength="1000" placeholder="Link... (Please include http://)"/>
 				</div>
 
 				<div class="links"> 
 					<input ng-model="activity.links.link5.desc" type="text" name="link_description3" maxlength="100" placeholder="Description or Title of link..."/>
 					<br />
-					<input ng-model="activity.links.link5.link" type="text" name="link3" maxlength="1000" placeholder="Link..."/>
+					<input ng-model="activity.links.link5.link" type="text" name="link3" maxlength="1000" placeholder="Link... (Please include http://)"/>
 				</div>
 
 				<h2>Category</h2>
@@ -101,19 +101,21 @@
 				</div>
 			</div>
 			<ul>
-				<li class="blok" ng-repeat="blok in bloks | filter:searchString" ng-click="showDetails = !showDetails">
-					<p>{{ blok.activity.verbose_name }}</p>
+				<li class="blok" ng-repeat="blok in bloks | orderByPriority: reverse | filter:searchString" ng-click="showDetails = !showDetails">
+					<h2>{{ blok.activity.verbose_name }}</h2>
 					<p>{{ blok.activity.description }}</p>
 					<div ng-show="showDetails" id="detailView">
 						<div>
-							<p>{{ blok.activity.verbose_name }}</p>
+							<h2>{{ blok.activity.verbose_name }}</h2>
 							<p>{{ blok.activity.description }}</p>
-							<ul>
-								<li ng-repeat="link in blok.activity.links">
-									{{ link.desc }}<br>
-									{{ link.link }}
-								</li>
-							</ul>
+							<div ng-show="{{blok.activity.links}}">
+								<h3>Get Started here:</h3>
+								<ul>
+									<li ng-repeat="link in blok.activity.links">
+										<a href="{{ link.link }}">{{ link.desc }}</a>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</li>
