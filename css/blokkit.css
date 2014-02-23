@@ -68,6 +68,10 @@ body {
 	padding-bottom: 3px;
 }
 
+.tab:hover {
+	color: #9CD6A7;
+}
+
 .active {
 	border-bottom: 3px solid #F26439;
 }
@@ -217,7 +221,7 @@ ul {
     margin: 150px auto;
     padding: 1% 5%;
     width: 40%;
-    color: #eeeeee;
+    color: #555555;
     background-color: #9CD6A7;
     border-radius: 10px;
     text-align: left;
@@ -233,7 +237,7 @@ ul {
 	font-size: 12px;
 	width: 12%;
 	height: 20px;
-	margin: auto;
+	margin: 10px auto 0px;
 	padding: 3px;
 }
 
@@ -241,4 +245,8 @@ ul {
 .likes {
 	margin-top: 3px;
 	margin-bottom: 2px;
+}
+
+.link:hover {
+	color: #dddddd;
 }
