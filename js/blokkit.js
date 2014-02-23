@@ -1,34 +1,40 @@
 var app = angular.module('blokkit', ['firebase']);
 
+function hasClass(elem, className) {
+    return new RegExp(" " + className + " ").test(" " + elem.className + " ");
+}
+
+function removeClass(elem, className) {
+    if(hasClass(elem, className))
+    {
+        elem.className = elem.className.replace(className, "");
+    }
+}
+
 app.directive('liblok', function() {
 	return {
 		restrict: 'A',
 		"link": function (scope, element, attrs) {
+
 			element.on('click', function() {
 				if (!element.hasClass('detailView'))
 				{
-					element.addClass('detailView');;
-					scope.templateUrl = 'detailBlok.html'
+					var bloks = document.getElementsByClassName('blok');
+					for(var i = 0; i < bloks.length; i++){removeClass(bloks[i], 'detailView');}
+
+					element.addClass('detailView');
 				}
 				else
 				{
 					element.removeClass('detailView');
-					scope.templateUrl = 'blok.html'
 				}
 			});
 		}
 	}
 });
 
-// "link": function (scope, element, attrs) {
-// 			jQuery('.blok').click(function(event){
-// 				var blok = jQuery(event.target);
-// 				blok.addClass('expanded');
-// 			});
-// 		}
-
 function main($scope, $firebase) {
-	$scope.templateUrl = 'blok.html'
+
 	//firebase instance
 	var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
 	//bind it to angular object
@@ -43,4 +49,6 @@ function main($scope, $firebase) {
 
 	 	$scope.bloks = bloks;
 	 });
+
+	$scope.showDetails = false;
 }

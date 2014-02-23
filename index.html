@@ -22,9 +22,13 @@
 				</div>
 			</div>
 			<ul>
-				<li class="blok" ng-repeat="blok in bloks | filter:searchString" ng-include="templateUrl">
+				<li liblok class="blok" ng-repeat="blok in bloks | filter:searchString" ng-click="showDetails = !showDetails">
 					<p class="name">{{ blok.details.verbose_name }}</p>
 					<p>{{ blok.details.description }}</p>
+					<div ng-show="showDetails">
+						<p>{{ blok.details.updated_at }}</p>
+						<p>Detailed now</p>
+					</div>
 				</li>
 			</ul>
 		</div>

@@ -142,43 +142,21 @@ h2 {
 	text-align: center;
 	color: #555555;
 	font-size: 1.25em;
+
+	-webkit-transition: height 500ms ease;
+    -moz-transition: height 500ms ease;
+    -o-transition: height 500ms ease;
+    transition: height 500ms ease;
 }
 
-
-/*not good*/
 .detailView {
-	position: absolute;
+	/*position: absolute;*/
 	z-index: 99;
 	height: 500px;
 	width: 33%;
-}
 
-#detailBlok {
-	display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    z-index: 100;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-#detailBlok div {
-    margin: 125px auto;
-    padding: 13px;
-    width: 250px;
-    background-color: #333333;
-    text-align: center;
-}
-
-.shown {
-	display: block !important;
-}
-
-.hidden {
-	display: none !important;
+	-webkit-transition: height 500ms ease;
+    -moz-transition: height 500ms ease;
+    -o-transition: height 500ms ease;
+    transition: height 500ms ease;
 }
