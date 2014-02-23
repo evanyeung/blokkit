@@ -1,0 +1,51 @@
+body {
+	background-color: #D5E5FF;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+	top: 0;
+	color: white;
+	font-family: helvetica;
+}
+
+p {
+	margin: 0px;
+	padding: 0;
+}
+
+.header {
+	text-align: center;
+	background-color: rgb(125,125,125);
+	position: fixed;
+	width: 100%;
+}
+
+.title {
+	margin: 20px;
+}
+
+form {
+	margin: 0;
+	padding-top: 6%;
+	padding-left: 27%;
+}
+
+.activity {
+	margin: 10px;
+}
+
+.description {
+	margin: 10px;
+}
+
+.links {
+	margin: 15px;
+}
+
+input {
+	margin: 3px;
+}
