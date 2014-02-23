@@ -6,12 +6,16 @@
 <body ng-app="blokkit">
 	<!--templates-->
 	<script type="text/ng-template" id="bloks.html">
-		<li liblok class="blok" ng-repeat="blok in activities | filter:searchString" ng-click="showDetails = !showDetails">
-			<p class="name">{{ blok.details.verbose_name }}</p>
+		<li class="blok" ng-repeat="blok in activities | filter:searchString" ng-click="showDetails = !showDetails">
+			<p>{{ blok.details.verbose_name }}</p>
 			<p>{{ blok.details.description }}</p>
-			<div ng-show="showDetails">
-				<p>{{ blok.details.updated_at }}</p>
-				<p>Detailed now</p>
+			<div ng-show="showDetails" id="detailView">
+				<div>
+					<p>{{ blok.details.verbose_name }}</p>
+					<p>{{ blok.details.description }}</p>
+					<p>{{ blok.details.updated_at }}</p>
+					<p>Detailed now</p>
+				</div>
 			</div>
 		</li>
 	</script>

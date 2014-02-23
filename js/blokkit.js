@@ -21,28 +21,6 @@ app.directive('gallery', function() {
 	};
 });
 
-app.directive('liblok', function() {
-	return {
-		restrict: 'A',
-		link: function (scope, element, attrs) {
-
-			element.on('click', function() {
-				if (!element.hasClass('detailView'))
-				{
-					var bloks = document.getElementsByClassName('blok');
-					for(var i = 0; i < bloks.length; i++){removeClass(bloks[i], 'detailView');}
-
-					element.addClass('detailView');
-				}
-				else
-				{
-					element.removeClass('detailView');
-				}
-			});
-		}
-	}
-});
-
 function main($scope, $firebase) {
 
 	//firebase instance
