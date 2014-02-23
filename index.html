@@ -5,14 +5,22 @@
 </head>
 <body ng-app="blokkit">
 	<div class="container" ng-controller="main">
-		<div class="row">
-			<div class="title">
-				<h1>Blokkit</h1>
+		<div class="header">
+			<div class="row">
+				<div class="title">
+					<h1 class="Blokkit">Blokkit</h1>
+				</div>
+			</div>
+			<div class="row">
+				<button>Add Hobby</button>
 			</div>
 		</div>
 		<div class="row">
-			<input type="text" placeholder="search..." ng-model="searchString.$">
-
+			<div class="row search">
+				<div class="search">
+					<input type="text" placeholder="search..." ng-model="searchString.$">
+				</div>
+			</div>
 			<ul>
 				<li class="blok" ng-repeat="blok in bloks | filter:searchString" ng-include="templateUrl">
 					<p class="name">{{ blok.details.verbose_name }}</p>
