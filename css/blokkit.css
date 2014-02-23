@@ -64,8 +64,12 @@ body {
 	color: #eeeeee;
 }
 
-.tabs {
-	width: 100%;
+.tab {
+	padding-bottom: 3px;
+}
+
+.active {
+	border-bottom: 3px solid #F26439;
 }
 /*add button*/
 

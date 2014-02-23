@@ -4,6 +4,14 @@ function hasClass(elem, className) {
     return new RegExp(" " + className + " ").test(" " + elem.className + " ");
 }
 
+function addClass(elem, className)
+{
+    if(!hasClass(elem, className))
+    {
+        elem.className += " " + className;
+    }
+}
+
 function removeClass(elem, className) {
     if(hasClass(elem, className))
     {
@@ -21,16 +29,33 @@ app.factory('DB', function($firebase){
 	return {'activities': activities}
 });
 
+app.directive('tab', function() {
+	return function(scope, element) {
+				element.on('click', function() {
+
+					var tabs = document.getElementsByClassName('tab');
+					for (var i in tabs) {
+						console.log(tabs[i]);
+						console.log(hasClass(tabs[i], 'active'));
+						removeClass(tabs[i], 'active');
+					}
+
+					element.addClass('active');
+				});
+			}
+});
+
 function main($scope, $firebase, ShowAddForm, DB) {
 
 	$scope.showAddForm = ShowAddForm;
 	$scope.category = ""
+	$scope.max_bloks = 5;
 
+	var fbActivitiesAll = new Firebase('https://blokkit.firebaseio.com/activities');
+	var fbActivities = fbActivitiesAll.limit($scope.max_bloks);
 
-	//$scope.bloks = DB.activities;
-	var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
-	
-	fbActivities.on('value', function(snapshot) {
+	function loadData(snapshot) {
+
 		if(snapshot.val() == null) {
 			console.log("not existing");
 		} 
@@ -45,13 +70,25 @@ function main($scope, $firebase, ShowAddForm, DB) {
 		 	var sortedBloks = [];
 		 	var length = bloks.length
 		 	for(var i = 0; i < length; i++) {
-		 		console.log(i);
 		 		sortedBloks.push(bloks.pop());
 		 	}
 
 		 	$scope.bloks = sortedBloks;
 		}
+	}
+
+	fbActivities.on('value', function(snapshot) {
+		loadData(snapshot);
 	});
+
+	$scope.load_more = function() {
+		$scope.max_bloks += 5;
+
+		var fbActivities = fbActivitiesAll.limit($scope.max_bloks);
+		fbActivities.on('value', function(snapshot) {
+			loadData(snapshot);
+		});
+	};
 
 	$scope.setCategory = function(category)
 	{

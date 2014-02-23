@@ -95,14 +95,14 @@
 			</div>
 			<div class="row">
 				<ul>
-					<li ng-click="setCategory('')"><a href="">All</a></li>
-					<li ng-click="setCategory('sports')"><a href="">Sports</a></li>
-					<li ng-click="setCategory('design')"><a href="">Design</a></li>
-					<li ng-click="setCategory('coding')"><a href="">Coding</a></li>
-					<li ng-click="setCategory('games')"><a href="">Games</a></li>
-					<li ng-click="setCategory('tv')"><a href="">TV</a></li>
-					<li ng-click="setCategory('books')"><a href="">Books</a></li>
-					<li ng-click="setCategory('movies')"><a href="">Movies</a></li>
+					<li tab class="tab active" ng-click="setCategory('')"><a href="">All</a></li>
+					<li tab class="tab" ng-click="setCategory('sports')"><a href="">Sports</a></li>
+					<li tab class="tab" ng-click="setCategory('design')"><a href="">Design</a></li>
+					<li tab class="tab" ng-click="setCategory('coding')"><a href="">Coding</a></li>
+					<li tab class="tab" ng-click="setCategory('games')"><a href="">Games</a></li>
+					<li tab class="tab" ng-click="setCategory('tv')"><a href="">TV</a></li>
+					<li tab class="tab" ng-click="setCategory('books')"><a href="">Books</a></li>
+					<li tab class="tab" ng-click="setCategory('movies')"><a href="">Movies</a></li>
 				</ul>
 			</div>
 		</div>
@@ -135,6 +135,7 @@
 					</div>
 				</li>
 			</ul>
+			<button class="load-more" type="button" ng-click="load_more()">Load More</button>
 		</div>
 	</div>
 	
