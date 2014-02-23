@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="css/brikkit.css">
-	<title>Blokkit</title>
+	<link rel="stylesheet" href="css/blokkit.css">
 </head>
-<body ng-app="brikkit">
-	<div class="container">
+<body ng-app="blokkit">
+	<!--templates-->
+	<script type="text/ng-template" id="bloks.html">
+		<li liblok class="blok" ng-repeat="blok in activities | filter:searchString" ng-click="showDetails = !showDetails">
+			<p class="name">{{ blok.details.verbose_name }}</p>
+			<p>{{ blok.details.description }}</p>
+			<div ng-show="showDetails">
+				<p>{{ blok.details.updated_at }}</p>
+				<p>Detailed now</p>
+			</div>
+		</li>
+	</script>
+
+	<!--main-->
+	<div class="container" ng-controller="main">
 		<div class="header">
 			<div class="row">
 				<div class="title">
 					<h1 class="Blokkit">Blokkit</h1>
 				</div>
 			</div>
-			<div class="row search">
-				<div class="search">
-					<input type="text" placeholder="search...">
-				</div>
+			<div class="row">
+				<button>Add Hobby</button>
 			</div>
 		</div>
-
-
-
-	<!--Block body-->	
-		<div class="rowlist">
-			<ul>
-				<li class="blok">
-					<h2>Activity</h2>
-				</li>
-				<li class="blok"></li>
-				<li class="blok"></li>
-				<li class="blok"></li>
-				<li class="blok"></li>
-				<li class="blok"></li>
-				<li class="blok"></li>
-				<li class="blok"></li>
-				<li class="blok"></li>
-			</ul>
+		<div class="row">
+			<div class="row search">
+				<div class="search">
+					<input type="text" placeholder="search..." ng-model="searchString.$">
+				</div>
+			</div>
+			<ul gallery activities="bloks"></ul>
 		</div>
 	</div>
 	
 	<!--scripts-->
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
-	<script src="js/brikkit.js"></script>
+	<script src='https://cdn.firebase.com/v0/firebase.js'></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
+	<script src="js/blokkit.js"></script>
 </body>
 </html>
