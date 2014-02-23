@@ -62,6 +62,15 @@ function form($scope, $firebase, ShowAddForm, DB) {
 		$scope.activities = DB.activities;
 
 		//var name = $scope.activity.verbose_name.toLowerCase().replace(' ', '_')
+		$scope.activity.categories = "";
+		if ($scope.activity.category1) {$scope.activity.categories = $scope.activity.categories + "sports "}
+		if ($scope.activity.category2) {$scope.activity.categories = $scope.activity.categories + "design "}
+		if ($scope.activity.category3) {$scope.activity.categories = $scope.activity.categories + "coding "}
+		if ($scope.activity.category4) {$scope.activity.categories = $scope.activity.categories + "games "}
+		if ($scope.activity.category5) {$scope.activity.categories = $scope.activity.categories + "tv "}
+		if ($scope.activity.category6) {$scope.activity.categories = $scope.activity.categories + "books "}
+		if ($scope.activity.category7) {$scope.activity.categories = $scope.activity.categories + "movies "}
+
 		$scope.activities.$add({'activity': $scope.activity})
 
 		$scope.activityForm.$setPristine();
