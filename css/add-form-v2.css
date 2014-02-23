@@ -28,6 +28,12 @@
 	color: #4D4C4B;
 }
 
+#addForm input:focus,
+#addForm textarea:focus{
+	outline: none;
+    box-shadow: 0 0 10px #4D8EC7;
+}
+
 #addForm h1 {
 	margin: 0;
 	padding: 0;
@@ -69,12 +75,10 @@
 	margin: 15px;
 }
 
-#addForm textarea {
-.category {
+#addForm .category {
 	margin: 15px;
 }
-
-div.category > input {
+#addForm div.category > input {
 	margin: 5px;
 	border: none;
 	border-color: white;
@@ -83,7 +87,7 @@ div.category > input {
 	color: white;
 }
 
-textarea {
+#addForm textarea {
 	padding: 5px;
 	background-color: white;
 	border-radius:  5px;
@@ -98,8 +102,7 @@ textarea {
 }
 
 #addForm button {
-	margin: auto;
-	margin-left: 235px;
+	margin: 0 auto;
 	width: 150px;
 	padding: 7px;
 	font-size: 24px;

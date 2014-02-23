@@ -50,7 +50,7 @@ function form($scope, $firebase, ShowAddForm) {
 	$scope.showAddForm = ShowAddForm;
 
 	$scope.submitForm = function() {
-		console.log($scope.activity);
-		console.log("Hello");
+		var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
+		$scope.showAddForm = false;
 	};
 }
