@@ -2,8 +2,85 @@
 <html>
 <head>
 	<link rel="stylesheet" href="css/blokkit.css">
+	<link rel="stylesheet" href="css/add-form-v2.css">
 </head>
 <body ng-app="blokkit">
+	
+	<div id="addForm" ng-show="showAddForm.shown" ng-controller="form">
+		<div>
+			<form>
+					
+				<h2>Activity</h2>
+
+				<div class="activity">
+					<input type="text" ng-model="activity.verbose_name" name="activity" size="20" maxlength="100" placeholder="Activity Name..." required/>
+				</div>
+
+				<div class="description">
+					<textarea ng-model="activity.description" name="description" rows="10" placeholder="Brief Description..." required></textarea>
+				</div>
+
+				<h2>Relevant Links</h2>
+
+				<div class="links"> 
+					<input ng-model="activity.links.link1.desc" type="text" name="link_description1" size="61" maxlength="100" placeholder="Description or Title of link..."/>
+					<input ng-model="activity.links.link1.link" type="text" name="link1" size="75" maxlength="1000" placeholder="Link..."/>
+				</div>
+
+				<div class="links"> 
+					<input ng-model="activity.links.link2.desc" type="text" name="link_description2" size="61" maxlength="100" placeholder="Description or Title of link..."/>
+					<input ng-model="activity.links.link2.link" type="text" name="link2" size="75" maxlength="1000" placeholder="Link..."/>
+				</div>
+
+				<div class="links"> 
+					<input ng-model="activity.links.link3.desc" type="text" name="link_description3" size="61" maxlength="100" placeholder="Description or Title of link..."/>
+					<input ng-model="activity.links.link3.link" type="text" name="link3" size="75" maxlength="1000" placeholder="Link..."/>
+				</div>
+
+				<div class="links"> 
+					<input ng-model="activity.links.link4.desc" type="text" name="link_description3" size="61" maxlength="100" placeholder="Description or Title of link..."/>
+					<input ng-model="activity.links.link4.link" type="text" name="link3" size="75" maxlength="1000" placeholder="Link..."/>
+				</div>
+
+				<div class="links"> 
+					<input ng-model="activity.links.link5.desc" type="text" name="link_description3" size="61" maxlength="100" placeholder="Description or Title of link..."/>
+					<input ng-model="activity.links.link5.link" type="text" name="link3" size="75" maxlength="1000" placeholder="Link..."/>
+				</div>
+
+
+				<h2>Relevant Tags</h2>
+
+				<div class="tags">
+					<input ng-model="activity.tags" type="text" name="tags" size="80" maxlength="1000" placeholder="Please ensure each of your tags are separated by spaces..." />
+				</div>
+
+				<button type="submit" ng-click="submitForm()">Blokk</button>
+			</form>
+		</div>
+	</div><!--addForm-->
+
+	<!--main-->
+	<div class="container" ng-controller="main">
+		<div class="header">
+			<div class="row">
+				<div class="title">
+					<h1 class="Blokkit">Blokkit</h1>
+				</div>
+			</div>
+			<div class="row">
+				<button ng-click="showAddForm.shown = !showAddForm.shown">Add Hobby</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="row search">
+				<div class="search">
+					<input type="text" placeholder="search..." ng-model="searchString.$">
+				</div>
+			</div>
+			<ul gallery activities="bloks"></ul>
+		</div>
+	</div>
+
 	<!--templates-->
 	<script type="text/ng-template" id="bloks.html">
 		<li class="blok" ng-repeat="blok in activities | filter:searchString" ng-click="showDetails = !showDetails">
@@ -19,28 +96,6 @@
 			</div>
 		</li>
 	</script>
-
-	<!--main-->
-	<div class="container" ng-controller="main">
-		<div class="header">
-			<div class="row">
-				<div class="title">
-					<h1 class="Blokkit">Blokkit</h1>
-				</div>
-			</div>
-			<div class="row">
-				<a href="add-form-v2.html" target="_blank"><button>Add Hobby</button></a>
-			</div>
-		</div>
-		<div class="row">
-			<div class="row search">
-				<div class="search">
-					<input type="text" placeholder="search..." ng-model="searchString.$">
-				</div>
-			</div>
-			<ul gallery activities="bloks"></ul>
-		</div>
-	</div>
 	
 	<!--scripts-->
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

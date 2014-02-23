@@ -11,6 +11,10 @@ function removeClass(elem, className) {
     }
 }
 
+app.factory('ShowAddForm', function(){
+	return {'shown': false};
+});
+
 app.directive('gallery', function() {
 	return {
 		restrict: 'A',
@@ -21,7 +25,9 @@ app.directive('gallery', function() {
 	};
 });
 
-function main($scope, $firebase) {
+function main($scope, $firebase, ShowAddForm) {
+
+	$scope.showAddForm = ShowAddForm;
 
 	//firebase instance
 	var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
@@ -37,4 +43,14 @@ function main($scope, $firebase) {
 
 	 	$scope.bloks = bloks;
 	 });
+}
+
+function form($scope, $firebase, ShowAddForm) {
+
+	$scope.showAddForm = ShowAddForm;
+
+	$scope.submitForm = function() {
+		console.log($scope.activity);
+		console.log("Hello");
+	};
 }

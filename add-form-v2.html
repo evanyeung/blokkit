@@ -1,62 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="blokkit">
 <head>
 	<link rel="stylesheet" type="text/css" href="css/add-form-v2.css">
 	<title>Add your hobbies</title>
 </head>
-<body>
-	<div class="header">
-		<h1 class="title">Blokk-It!</h1>
-	</div>
-
-	<form>
-		
-		<h2>Activity</h2>
-
-		<div class="activity">
-			<input type="text" name="activity" size="20" maxlength="100" placeholder="Activity Name..."/>
+	<body ng-controller="form">
+		<div class="header">
+			<h1 class="title">Blokk-It!</h1>
 		</div>
 
-		<div class="description">
-		<textarea name="description" cols="75" rows="10" placeholder="Brief Description..."></textarea>
-		</div>
+		<form ng-contoller="form">
+			
+			<h2>Activity</h2>
 
-		<h2>Relevant Links</h2>
+			<div class="activity">
+				<input type="text" ng-model="activity.verbose_name" name="activity" size="20" maxlength="100" placeholder="Activity Name..." required/>
+			</div>
 
-		<div class="links"> 
-			<input type="text" name="link_description1" size="61" maxlength="100" placeholder="Description or Title of link..."/>
-			<input type="text" name="link1" size="75" maxlength="1000" placeholder="Link..."/>
-		</div>
+			<div class="description">
+				<textarea ng-model="activity.description" name="description" cols="75" rows="10" placeholder="Brief Description..." required></textarea>
+			</div>
 
-		<div class="links"> 
-			<input type="text" name="link_description2" size="61" maxlength="100" placeholder="Description or Title of link..."/>
-			<input type="text" name="link2" size="75" maxlength="1000" placeholder="Link..."/>
-		</div>
+			<h2>Relevant Links</h2>
 
-		<div class="links"> 
-			<input type="text" name="link_description3" size="61" maxlength="100" placeholder="Description or Title of link..."/>
-			<input type="text" name="link3" size="75" maxlength="1000" placeholder="Link..."/>
-		</div>
+			<div class="links"> 
+				<input ng-model="activity.links.link1.desc" type="text" name="link_description1" size="61" maxlength="100" placeholder="Description or Title of link..."/>
+				<input ng-model="activity.links.link1.link" type="text" name="link1" size="75" maxlength="1000" placeholder="Link..."/>
+			</div>
 
-		<div class="links"> 
-			<input type="text" name="link_description3" size="61" maxlength="100" placeholder="Description or Title of link..."/>
-			<input type="text" name="link3" size="75" maxlength="1000" placeholder="Link..."/>
-		</div>
+			<div class="links"> 
+				<input ng-model="activity.links.link2.desc" type="text" name="link_description2" size="61" maxlength="100" placeholder="Description or Title of link..."/>
+				<input ng-model="activity.links.link2.link" type="text" name="link2" size="75" maxlength="1000" placeholder="Link..."/>
+			</div>
 
-		<div class="links"> 
-			<input type="text" name="link_description3" size="61" maxlength="100" placeholder="Description or Title of link..."/>
-			<input type="text" name="link3" size="75" maxlength="1000" placeholder="Link..."/>
-		</div>
+			<div class="links"> 
+				<input ng-model="activity.links.link3.desc" type="text" name="link_description3" size="61" maxlength="100" placeholder="Description or Title of link..."/>
+				<input ng-model="activity.links.link3.link" type="text" name="link3" size="75" maxlength="1000" placeholder="Link..."/>
+			</div>
+
+			<div class="links"> 
+				<input ng-model="activity.links.link4.desc" type="text" name="link_description3" size="61" maxlength="100" placeholder="Description or Title of link..."/>
+				<input ng-model="activity.links.link4.link" type="text" name="link3" size="75" maxlength="1000" placeholder="Link..."/>
+			</div>
+
+			<div class="links"> 
+				<input ng-model="activity.links.link5.desc" type="text" name="link_description3" size="61" maxlength="100" placeholder="Description or Title of link..."/>
+				<input ng-model="activity.links.link5.link" type="text" name="link3" size="75" maxlength="1000" placeholder="Link..."/>
+			</div>
 
 
-		<h2>Relevant Tags</h2>
+			<h2>Relevant Tags</h2>
 
-		<div class="tags">
-			<input type="text" name="tags" size="80" maxlength="1000" placeholder="Please ensure each of your tags are separated by spaces..." />
-		</div>
+			<div class="tags">
+				<input ng-model="activity.tags" type="text" name="tags" size="80" maxlength="1000" placeholder="Please ensure each of your tags are separated by spaces..." />
+			</div>
 
-		<button type="button">Blokk</button>
+			<button type="submit" ng-click="submitForm()">Blokk</button>
 
-	</form>
-</body>
+		</form>
+
+
+		<!--scripts-->
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+		<script src='https://cdn.firebase.com/v0/firebase.js'></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
+		<script src="js/blokkit.js"></script>
+	</body>
 </html>

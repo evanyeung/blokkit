@@ -137,7 +137,7 @@ ul {
 	margin-left:10px;
 }
 
-h2 {
+.blok h2 {
 	margin: 0;
 	padding: 10px;
 	width: 28%;
@@ -165,17 +165,6 @@ h2 {
     transition: height 500ms ease;*/
 }
 
-.detailView {
-	/*position: absolute;*/
-	/*z-index: 99;
-	height: 500px;
-	width: 33%;
-
-	-webkit-transition: height 500ms ease;
-    -moz-transition: height 500ms ease;
-    -o-transition: height 500ms ease;
-    transition: height 500ms ease;*/
-}
 
 #detailView {
     position: fixed;

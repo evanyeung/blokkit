@@ -1,16 +1,34 @@
-body {
-	background-color: #9CD6A7;
-	margin: 0;
-	padding: 0;
-	padding-bottom: 30px;
+#addForm {
+	position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 50px 0 100px 0;
+    z-index: 100;
+    /*background-color: rgba(156, 214, 167, 0.75);*/
+    background-color: rgba(100, 100, 100, 0.75);
 }
 
-* {
+#addForm div {
+	margin: 0 auto;
+	background-color: #9CD6A7;
+	width: 60%;
+	border-radius: 20px;
+}
+
+#addForm form {
+	margin: 0;
+	padding: 5%;
+	font-family: helvetica, sans-serif;
+}
+
+#addForm * {
 	border: none;
 	color: #4D4C4B;
 }
 
-h1 {
+#addForm h1 {
 	margin: 0;
 	padding: 0;
 	top: 0;
@@ -18,59 +36,54 @@ h1 {
 	font-family: helvetica, sans-serif;
 }
 
-p {
+#addForm p {
 	margin: 0px;
 	padding: 0;
 }
 
-.header {
+#addForm .header {
 	text-align: center;
 	background-color: rgba(125,125,125, 0.75);
 	position: fixed;
 	width: 100%;
 }
 
-.title {
+#addForm .title {
 	margin: 20px;
 }
 
-form {
-	margin: 0;
-	padding-top: 6%;
-	padding-left: 27%;
-	font-family: helvetica, sans-serif;
-}
-
-.activity {
+#addForm .activity {
 	margin: 10px;
 }
 
-.description {
+#addForm .description {
 	margin: 10px;
+	width: 90%;
 }
 
-.links {
+#addForm .links {
 	margin: 15px;
 }
 
-.tags {
+#addForm .tags {
 	margin: 15px;
 }
 
-textarea {
+#addForm textarea {
 	padding: 5px;
 	background-color: white;
 	border-radius:  5px;
+	width: 100%;
 }
 
-input {
+#addForm input {
 	margin: 3px;
 	padding: 5px;
 	background-color: white;
 	border-radius: 5px;
 }
 
-button {
+#addForm button {
 	margin: auto;
 	margin-left: 235px;
 	width: 150px;
@@ -81,11 +94,11 @@ button {
 	color: white;
 }
 
-button:focus {
+#addForm button:focus {
 	outline: none;
 }
 
-button:hover, button:focus {
+#addForm button:hover, button:focus {
 	background-color: #4D4C4B;
 	color: #9CD6A7;
 }
