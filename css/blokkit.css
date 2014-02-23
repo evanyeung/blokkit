@@ -76,6 +76,23 @@ button:hover, button:focus {
     background-color: #7ABD97;
 }
 
+a:link {
+	text-decoration:none;
+	color: inherit;
+}
+a:visited {
+	text-decoration:none;
+	color: inherit;
+}
+a:hover {
+	text-decoration:none;
+	color: inherit;
+}
+a:active {
+	text-decoration:none;
+	color: inherit;
+}
+
 .add{
 	width: 20%;
 	margin: 0 auto;
