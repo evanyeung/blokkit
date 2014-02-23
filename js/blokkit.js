@@ -82,7 +82,7 @@ function main($scope, $firebase, ShowAddForm, DB) {
 	});
 
 	$scope.load_more = function() {
-		$scope.max_bloks += 3;
+		$scope.max_bloks += 6;
 
 		var fbActivities = fbActivitiesAll.limit($scope.max_bloks);
 		fbActivities.on('value', function(snapshot) {
