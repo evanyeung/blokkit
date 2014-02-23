@@ -95,14 +95,14 @@
 			</div>
 			<div class="row">
 				<ul>
-					<li ng-click="setCategory('')"><a href="">All</a></li>
-					<li ng-click="setCategory('sports')"><a href="">Sports</a></li>
-					<li ng-click="setCategory('design')"><a href="">Design</a></li>
-					<li ng-click="setCategory('coding')"><a href="">Coding</a></li>
-					<li ng-click="setCategory('games')"><a href="">Games</a></li>
-					<li ng-click="setCategory('tv')"><a href="">TV</a></li>
-					<li ng-click="setCategory('books')"><a href="">Books</a></li>
-					<li ng-click="setCategory('movies')"><a href="">Movies</a></li>
+					<li ng-click="setCategory('')" class:"cats"><a href="">All</a></li>
+					<li ng-click="setCategory('sports')" class:"cats"><a href="">Sports</a></li>
+					<li ng-click="setCategory('design')" class:"cats"><a href="">Design</a></li>
+					<li ng-click="setCategory('coding')" class:"cats"><a href="">Coding</a></li>
+					<li ng-click="setCategory('games')" class:"cats"><a href="">Games</a></li>
+					<li ng-click="setCategory('tv')" class:"cats"><a href="">TV</a></li>
+					<li ng-click="setCategory('books')" class:"cats"><a href="">Books</a></li>
+					<li ng-click="setCategory('movies')" class:"cats"><a href="">Movies</a></li>
 				</ul>
 			</div>
 		</div>
@@ -125,7 +125,7 @@
 								<h3>Get Started here:</h3>
 								<ul>
 									<li ng-repeat="link in blok.activity.links">
-										<a href="{{ link.link }}">{{ link.desc }}</a>
+										<a href="{{ link.link }}" class="link" target:"_blank">{{ link.desc }}</a>
 									</li>
 								</ul>
 							</div>

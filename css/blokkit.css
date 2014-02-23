@@ -92,6 +92,16 @@ button:hover, button:focus {
 
 }
 
+li > a:hover {
+	text-decoration: underline;
+	color: #9CD6A7;
+}
+
+li > a:active {
+	text-decoration: underline;
+	color: #9CD6A7;
+}
+
 a:link {
 	text-decoration:none;
 	color: inherit;
@@ -204,7 +214,7 @@ ul {
     margin: 150px auto;
     padding: 1% 5%;
     width: 40%;
-    color: #eeeeee;
+    color: #555555;
     background-color: #9CD6A7;
     border-radius: 10px;
     text-align: left;
@@ -219,6 +229,14 @@ ul {
 	font-size: 12px;
 	width: 12%;
 	height: 20px;
-	margin: auto;
+	margin: 10px auto 0px;
 	padding: 3px;
+}
+
+.link:hover {
+	color: #dddddd;
+}
+
+.link:visited {
+	text-decoration: line-through;
 }
