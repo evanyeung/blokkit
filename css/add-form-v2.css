@@ -15,7 +15,7 @@ h1 {
 	padding: 0;
 	top: 0;
 	color: white;
-	font-family: helvetica;
+	font-family: helvetica, sans-serif;
 }
 
 p {
@@ -38,7 +38,7 @@ form {
 	margin: 0;
 	padding-top: 6%;
 	padding-left: 27%;
-	font-family: arial;
+	font-family: helvetica, sans-serif;
 }
 
 .activity {
@@ -81,7 +81,11 @@ button {
 	color: white;
 }
 
-button:hover {
+button:focus {
+	outline: none;
+}
+
+button:hover, button:focus {
 	background-color: #4D4C4B;
 	color: #9CD6A7;
 }

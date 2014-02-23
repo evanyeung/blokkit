@@ -51,14 +51,10 @@ body {
 }
 
 /*add button*/
-button {
-	width: 15%;
-	margin: 0 auto;
-	text-align: center;
-	background-color: ;
-}
 
 button {
+	width: 15%;
+	text-align: center;
     display: block;
     margin: 10px auto;
     padding: 7px 12px 7px 12px;
@@ -66,7 +62,7 @@ button {
     border-radius: 3px;
     font-size: 1.25em;
     color: #eeeeee;
-    background-color: #8FDEB2;
+    background-color: #4D4C4B;
 }
 
 button:focus {
@@ -74,7 +70,9 @@ button:focus {
 }
 
 button:hover, button:focus {
-    background-color: #7ABD97;
+    background-color: #76787A;
+   	color: #9CD6A7;
+
 }
 
 a:link {
@@ -94,7 +92,7 @@ a:active {
 	color: inherit;
 }
 
-.add{
+/*.add{
 	width: 20%;
 	margin: 0 auto;
 	padding: 5px;
@@ -102,7 +100,7 @@ a:active {
 	background-color: rgb(200,240,200);
 	border-radius: 50px;
 	text-decoration: none;
-}
+}*/
 
 .title,
 .search {
@@ -116,7 +114,7 @@ a:active {
 	background-color: #eeeeee;
 	color: #555555;
 	border-radius: 5px;
-	margin-top: 10px;
+	margin-top: 150px;
 	width: 100%;
 	font-size: 1.25em;
 	padding: 7px 12px 7px 12px;
@@ -189,14 +187,16 @@ h2 {
     padding: 0;
     text-align: center;
     z-index: 100;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(10, 10, 10, 0.75);
 }
 
 #detailView div {
-    margin: 125px auto;
-    padding: 13px;
-    width: 250px;
-    background-color: #333333;
+    margin: 150px auto;
+    padding: 5px;
+    width: 500px;
+    color: #888888;
+    background-color: #050505;
     text-align: center;
     border-radius: 10px;
+    font-size: 16px;
 }
