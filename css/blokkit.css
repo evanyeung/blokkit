@@ -50,6 +50,24 @@ body {
 	margin: 0;
 }
 
+/*categories*/
+.header ul {
+	margin: 0 auto;
+	width: 63%;
+}
+.header li {
+	width: 7%;
+	margin: 5px 2%;
+	float: left;
+	list-style: none;
+	text-align: center;
+	color: #eeeeee;
+	background-color: blue;
+}
+
+.tabs {
+	width: 100%;
+}
 /*add button*/
 
 button {
@@ -114,7 +132,7 @@ a:active {
 	background-color: #eeeeee;
 	color: #555555;
 	border-radius: 5px;
-	margin-top: 150px;
+	margin-top: 157px;
 	width: 100%;
 	font-size: 1.25em;
 	padding: 7px 12px 7px 12px;
@@ -135,13 +153,6 @@ ul {
 .rowlist {
 	margin-top: 10px;
 	margin-left:10px;
-}
-
-.blok h2 {
-	margin: 0;
-	padding: 10px;
-	width: 28%;
-	overflow: hidden;
 }
 
 .blok {
@@ -165,6 +176,9 @@ ul {
     transition: height 500ms ease;*/
 }
 
+.blok:hover {
+	background-color: #dddddd;
+}
 
 #detailView {
     position: fixed;
@@ -174,18 +188,30 @@ ul {
     height: 100%;
     margin: 0 0 0 0;
     padding: 0;
-    text-align: center;
     z-index: 100;
-    background-color: rgba(10, 10, 10, 0.75);
+    background-color: rgba(100, 100, 100, 0.75);
 }
 
-#detailView div {
+#detailView > div {
     margin: 150px auto;
-    padding: 5px;
-    width: 500px;
-    color: #999999;
-    background-color: #2D2C2B;
-    text-align: center;
+    padding: 1% 5%;
+    width: 40%;
+    color: #eeeeee;
+    background-color: #9CD6A7;
     border-radius: 10px;
-    font-size: 16px;
+    text-align: left;
+    font-size: 1em;
+    overflow: scroll;
+}
+
+#detailView div p {
+	margin-bottom: 5px;
+}
+
+.like {
+	font-size: 12px;
+	width: 12%;
+	height: 20px;
+	margin: auto;
+	padding: 3px;
 }

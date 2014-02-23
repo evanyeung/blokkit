@@ -25,49 +25,49 @@
 				<div class="links"> 
 					<input ng-model="activity.links.link1.desc" type="text" name="link_description1" maxlength="100" placeholder="Description or Title of link..."/>
 					<br />
-					<input ng-model="activity.links.link1.link" type="text" name="link1" maxlength="1000" placeholder="Link..."/>
+					<input ng-model="activity.links.link1.link" type="text" name="link1" maxlength="1000" placeholder="Link... (Please include http://)"/>
 				</div>
 
 				<div class="links"> 
 					<input ng-model="activity.links.link2.desc" type="text" name="link_description2" maxlength="100" placeholder="Description or Title of link..."/>
 					<br />
-					<input ng-model="activity.links.link2.link" type="text" name="link2" maxlength="1000" placeholder="Link..."/>
+					<input ng-model="activity.links.link2.link" type="text" name="link2" maxlength="1000" placeholder="Link... (Please include http://)"/>
 				</div>
 
 				<div class="links"> 
 					<input ng-model="activity.links.link3.desc" type="text" name="link_description3" maxlength="100" placeholder="Description or Title of link..."/>
 					<br />
-					<input ng-model="activity.links.link3.link" type="text" name="link3" maxlength="1000" placeholder="Link..."/>
+					<input ng-model="activity.links.link3.link" type="text" name="link3" maxlength="1000" placeholder="Link... (Please include http://)"/>
 				</div>
 
 				<div class="links"> 
 					<input ng-model="activity.links.link4.desc" type="text" name="link_description3" maxlength="100" placeholder="Description or Title of link..."/>
 					<br />
-					<input ng-model="activity.links.link4.link" type="text" name="link3" maxlength="1000" placeholder="Link..."/>
+					<input ng-model="activity.links.link4.link" type="text" name="link3" maxlength="1000" placeholder="Link... (Please include http://)"/>
 				</div>
 
 				<div class="links"> 
 					<input ng-model="activity.links.link5.desc" type="text" name="link_description3" maxlength="100" placeholder="Description or Title of link..."/>
 					<br />
-					<input ng-model="activity.links.link5.link" type="text" name="link3" maxlength="1000" placeholder="Link..."/>
+					<input ng-model="activity.links.link5.link" type="text" name="link3" maxlength="1000" placeholder="Link... (Please include http://)"/>
 				</div>
 
 				<h2>Category</h2>
 
 				<div class="category">
-					<input type="checkbox" name="category" value="sports" />Sports
+					<input type="checkbox" name="category" value="sports" ng-model="activity.category1" />Sports
 					<br />
-					<input type="checkbox" name="category" value="art" />Visual Arts and Design
+					<input type="checkbox" name="category" value="art" ng-model="activity.category2" />Arts and Design
 					<br />
-					<input type="checkbox" name="category" value="programming" />Developing and Programming
+					<input type="checkbox" name="category" value="programming" ng-model="activity.category3" />Developing and Programming
 					<br />
-					<input type="checkbox" name="category" value="gaming" />Gaming
+					<input type="checkbox" name="category" value="gaming" ng-model="activity.category4" />Games
 					<br />
-					<input type="checkbox" name="category" value="televsion" />Television Shows
+					<input type="checkbox" name="category" value="televsion" ng-model="activity.category5" />Television Shows
 					<br />
-					<input type="checkbox" name="category" value="books" />Books and Novels
+					<input type="checkbox" name="category" value="books" ng-model="activity.category6" />Books and Novels
 					<br />
-					<input type="checkbox" name="category" value="movies" />Movies
+					<input type="checkbox" name="category" value="movies" ng-model="activity.category7" />Movies
 				</div>
 
 
@@ -97,36 +97,49 @@
 			<div class="row">
 				<button ng-click="showAddForm.shown = !showAddForm.shown">Add Hobby</button>
 			</div>
+			<div class="row">
+				<ul>
+					<li tab cat="category" this-cat="all">All</li>
+					<li tab cat="category" this-cat="sports">Sports</li>
+					<li tab cat="category" this-cat="design">Design</li>
+					<li tab cat="category" this-cat="coding">Coding</li>
+					<li tab cat="category" this-cat="games">Games</li>
+					<li tab cat="category" this-cat="tv">TV</li>
+					<li tab cat="category" this-cat="books">Books</li>
+					<li tab cat="category" this-cat="movies">Movies</li>
+				</ul>
+			</div>
 		</div>
 		<div class="row">
 			<div class="row search">
 				<div class="search">
 					<input type="text" placeholder="search..." ng-model="searchString.$">
+					{{category.cat}}
 				</div>
 			</div>
-			<ul gallery activities="bloks"></ul>
+			<ul>
+				<li class="blok" ng-repeat="blok in bloks | orderByPriority: reverse | filter:searchString" ng-click="showDetails = !showDetails">
+					<h2>{{ blok.activity.verbose_name }}</h2>
+					<p>{{ blok.activity.description }}</p>
+					<div ng-show="showDetails" id="detailView">
+						<div>
+							<h2>{{ blok.activity.verbose_name }}</h2>
+							<p>{{ blok.activity.description }}</p>
+							<div ng-show="{{blok.activity.links}}">
+								<h3>Get Started here:</h3>
+								<ul>
+									<li ng-repeat="link in blok.activity.links">
+										<a href="{{ link.link }}">{{ link.desc }}</a>
+									</li>
+								</ul>
+							</div>
+						<button type="button" class="like">Like</button>
+						</div>
+					</div>
+				</li>
+			</ul>
 		</div>
 	</div>
-
-	<!--templates-->
-	<script type="text/ng-template" id="bloks.html">
-		<li class="blok" ng-repeat="blok in activities | filter:{activity.verbose_name: 'hello'}" ng-click="showDetails = !showDetails">
-			<p>{{ blok.activity.verbose_name }}</p>
-			<p>{{ blok.activity.description }}</p>
-			<div ng-show="showDetails" id="detailView">
-				<div>
-					<p>{{ blok.activity.verbose_name }}</p>
-					<p>{{ blok.activity.description }}</p>
-					<ul>
-						<li ng-repeat="link in blok.activity.links">
-							{{ link.desc }}<br>
-							{{ link.link }}
-						</li>
-					</ul>
-				</div>
-			</div>
-		</li>
-	</script>
 	
 	<!--scripts-->
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
