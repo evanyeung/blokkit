@@ -264,7 +264,10 @@ ul {
 	opacity:0;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 	.blok {width: 80%; display: block; margin: 20px auto;}
 	#detailView > div {width: 80%;}
+	.header {position: static}
+	.header li {width: auto; float: none; display: inline-block;}
+	.search input { margin-top: 20px;}
 }
