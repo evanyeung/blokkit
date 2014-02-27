@@ -264,7 +264,7 @@ ul {
 	opacity:0;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
 	.blok {width: 80%; display: block; margin: 20px auto;}
 	#detailView > div {width: 80%;}
 	.header {position: static}
