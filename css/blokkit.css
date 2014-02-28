@@ -270,4 +270,6 @@ ul {
 	.header {position: static}
 	.header li {width: auto; float: none; display: inline-block;}
 	.search input { margin-top: 20px;}
+	#detailView > div { margin: 50px auto ;}
+	button { width: 50%; }
 }
