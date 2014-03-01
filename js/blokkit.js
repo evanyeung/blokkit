@@ -19,8 +19,9 @@ function removeClass(elem, className) {
     }
 }
 
-app.factory('ShowAddForm', function(){
-	return {'shown': false};
+app.factory('ShowForm', function(){
+	return {'shown': false,
+			'currentBlokk': {activity: {}}};
 });
 
 app.factory('DB', function($firebase){
@@ -45,9 +46,9 @@ app.directive('tab', function() {
 			}
 });
 
-function main($scope, $firebase, ShowAddForm, DB) {
+function main($scope, $firebase, ShowForm, DB) {
 
-	$scope.showAddForm = ShowAddForm;
+	$scope.showForm = ShowForm;
 	$scope.category = ""
 	$scope.max_bloks = 6;
 
@@ -95,6 +96,13 @@ function main($scope, $firebase, ShowAddForm, DB) {
 		$scope.category = category;
 	}
 
+	$scope.edit = function(blok){
+		$scope.showForm.currentBlokk = blok;
+		//console.log(blok);
+		//console.log(ShowForm.currentBlokk.activity);
+		$scope.showForm.shown = true;
+	}
+
 	$scope.like = function(blok) {
 		
 		var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
@@ -105,62 +113,81 @@ function main($scope, $firebase, ShowAddForm, DB) {
 		var now = Date.now();
 		blok.updated_at = now;
 		blok.activity.likes += 1;
-
 		console.log(blok);
-		console.log('about to write');
+
 		fbActivities.child(id).setWithPriority(blok, now);
-		console.log('written');
 	}
 }
 
-function form($scope, $firebase, ShowAddForm, DB) {
+function form($scope, $firebase, ShowForm, DB) {
 
-	$scope.showAddForm = ShowAddForm;
+	$scope.showForm = ShowForm;
 
 	$scope.submitForm = function() {
-		$scope.activities = DB.activities;
+		//console.log($scope.showForm.currentBlokk);
 
-		//var name = $scope.activity.verbose_name.toLowerCase().replace(' ', '_')
-		$scope.activity.categories = "";
-		if ($scope.activity.category1) {
-			$scope.activity.categories = $scope.activity.categories + "sports ";
-			delete $scope.activity['category1'];
+		//var name = $scope.showForm.activity.verbose_name.toLowerCase().replace(' ', '_')
+		$scope.showForm.currentBlokk.activity.categories = "";
+		if ($scope.showForm.currentBlokk.activity.category1) {
+			$scope.showForm.currentBlokk.activity.categories = $scope.showForm.currentBlokk.activity.categories + "sports ";
+			//delete $scope.showForm.currentBlokk.activity['category1'];
 		}
-		if ($scope.activity.category2) {
-			$scope.activity.categories = $scope.activity.categories + "design ";
-			delete $scope.activity['category2'];
+		if ($scope.showForm.currentBlokk.activity.category2) {
+			$scope.showForm.currentBlokk.activity.categories = $scope.showForm.currentBlokk.activity.categories + "design ";
+			//delete $scope.showForm.currentBlokk.activity['category2'];
 		}
-		if ($scope.activity.category3) {
-			$scope.activity.categories = $scope.activity.categories + "coding ";
-			delete $scope.activity['category3'];
+		if ($scope.showForm.currentBlokk.activity.category3) {
+			$scope.showForm.currentBlokk.activity.categories = $scope.showForm.currentBlokk.activity.categories + "coding ";
+			//delete $scope.showForm.currentBlokk.activity['category3'];
 		}
-		if ($scope.activity.category4) {
-			$scope.activity.categories = $scope.activity.categories + "games ";
-			delete $scope.activity['category4'];
+		if ($scope.showForm.currentBlokk.activity.category4) {
+			$scope.showForm.currentBlokk.activity.categories = $scope.showForm.currentBlokk.activity.categories + "games ";
+			//delete $scope.showForm.currentBlokk.activity['category4'];
 		}
-		if ($scope.activity.category5) {
-			$scope.activity.categories = $scope.activity.categories + "tv ";
-			delete $scope.activity['category5'];
+		if ($scope.showForm.currentBlokk.activity.category5) {
+			$scope.showForm.currentBlokk.activity.categories = $scope.showForm.currentBlokk.activity.categories + "tv ";
+			//delete $scope.showForm.currentBlokk.activity['category5'];
 		}
-		if ($scope.activity.category6) {
-			$scope.activity.categories = $scope.activity.categories + "books ";
-			delete $scope.activity['category6'];
+		if ($scope.showForm.currentBlokk.activity.category6) {
+			$scope.showForm.currentBlokk.activity.categories = $scope.showForm.currentBlokk.activity.categories + "books ";
+			//delete $scope.showForm.currentBlokk.activity['category6'];
 		}
-		if ($scope.activity.category7) {
-			$scope.activity.categories = $scope.activity.categories + "movies ";
-			delete $scope.activity['category7'];
+		if ($scope.showForm.currentBlokk.activity.category7) {
+			$scope.showForm.currentBlokk.activity.categories = $scope.showForm.currentBlokk.activity.categories + "movies ";
+			//delete $scope.showForm.currentBlokk.activity['category7'];
 		}
 		
 		var now = Date.now();
 
-		$scope.activity.updated_at = now;
-		$scope.activity.$priority = now;
-		$scope.activity.likes = 0;
+		$scope.showForm.currentBlokk.activity.updated_at = now;
+		$scope.showForm.currentBlokk.activity.$priority = now;
 
-		$scope.activities.$add({'activity': $scope.activity})
+		//console.log($scope.showForm.currentBlokk);
 
+		//edit
+		if($scope.showForm.currentBlokk.id){
+			//should have a function to connect
+			var fbActivities = new Firebase('https://blokkit.firebaseio.com/activities');
+
+			//similar code to like. probably make a function
+			var id = $scope.showForm.currentBlokk.id;
+			delete $scope.showForm.currentBlokk['id'];
+			delete $scope.showForm.currentBlokk['$$hashKey'];
+			delete $scope.showForm.currentBlokk.activity['$priority'];
+			console.log($scope.showForm.currentBlokk);
+			fbActivities.child(id).setWithPriority($scope.showForm.currentBlokk, now);
+
+		}
+		//new
+		else {
+			$scope.showForm.currentBlokk.activity.likes = 0;
+			//TODO: connect the same way as the others
+			$scope.activities = DB.activities;
+			$scope.activities.$add({'activity': $scope.showForm.currentBlokk.activity})
+		}
+		
 		$scope.activityForm.$setPristine();
-		$scope.activity = {};
-		$scope.showAddForm.shown = false;
+		$scope.showForm.currentBlokk = {activity: {}};
+		$scope.showForm.shown = false;
 	};
 }
