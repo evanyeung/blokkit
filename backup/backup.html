@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blokkit Dump</title>
+</head>
+<body>
+	<p>Use this site to backup the firebase data. Click [Dump Data] and copy the data to a text file for storage. To restore the database, copy the dumped data into the text box and click [Restore Data]</p>
+	<textarea id="restore-text" placeholder="Place data to be restored here..."></textarea>
+	<div>
+		<button id="dump-btn">Dump Data</button>
+		<button id="restore-btn" type="button">Restore Data</button>
+	</div>
+	<div id="dump"></div>
+	<script src='https://cdn.firebase.com/v0/firebase.js'></script>
+	<script src="backup.js"></script>
+</body>
